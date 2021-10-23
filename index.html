@@ -1,0 +1,175 @@
+<html>
+			<read>
+<title>Desafio Itaú - Nahida Ali Abou Nouh</title>
+</read>
+<body>
+<h1>Formulário de cadastro pessoal</h1>
+<br>
+<p>Todos os campos com asterisco são de preenchimento obrigatório.</p>
+<br>
+<br>
+<form action="salvar.html" name="cadastro">
+<br>
+<b> <h2>DadosPessoais</h2></b>
+<br>
+<label for="nomecompleto">* Nome Completo:</label>
+<input type="text" name="nomecompleto" id="nomecompleto">
+<br>
+<label>sexo</label>
+<br>
+<input type="radio" name="sexo" id="sexo" value="m">Masculino
+<br>
+<input type="radio" name="sexo" id="sexo" value="f">Feminino
+<br>
+<label for="cpf">* Informe o número do seu CPF</label>
+<input type="tel" name="cpf" id="cpf" maxlength="14" onkeypress="completaCpf()">
+<br>
+<label for="rg">Informe seu RG:</label>
+<input type="text" name="rg" id="rg">
+<br>
+<label for="datanascimento">Data de nascimento</label>
+<input type="date" name="datanascimento" id="datanascimento">
+<br><br>
+<h2>Endereço</h2>
+<br>
+<label for="estado">selecione o seu estado</label>
+<select name="estado" id="estado">
+<option value="Ac">Acre</option>
+<option value="Al">Alagoas</option>
+<option value="Ap">Amapá</option>
+<option value="Am">Amazonas</option>
+<option value="Ba">Bahia</option>
+<option value="DF">Brasília</option>
+<option value="Ce">Ceará</option>
+<option value="ES">Espírito Santo</option>
+<option value="Go">Goiás</option>
+<option value="Ma">Maranhão</option>
+<option value="Mt">Mato Grosso</option>
+<option value="MS">Mato Grosso do Sul</option>
+<option value="MG">Minas Gerais</option>
+<option value="Pa">Pará</option>
+<option value="Pb">Paraíba</option>
+<option value="Pr">Paraná</option>
+<option value="Pe">Pernambuco</option>
+<option value="Pi">Piauí</option>
+<option value="RJ">Rio de Janeiro</option>
+<option value="RN">Rio Grande do Norte</option>
+<option value="RS">Rio Grande do Sul</option>
+<option value="Ro">Rondônia</option>
+<option value="Rr">Roraima</option>
+<option value="SC">Santa Catarina</option>
+<option value="SP">São Paulo</option>
+<option value="Se">Sergipe</option>
+<option value="To">Tocantins</option>
+</select>
+<br>
+<label for="cidade">Informe sua cidade:</label>
+<input type="text" name="cidade" id="cidade">
+<label for="cep">digite aqui o seu CEP</label>
+<input type="text" name="cep" id="cep" maxlength="9" onkeypress="completaCEP()">
+<br>
+<label for="endereco">* Informe seu logradouro, ex: Avenida, Travessa, Rua:</label>
+<input type="text" name="endereco" id="endereco" riquered>
+<br>
+<label for="numero">*Número</label>
+<input type="number" name="numero" id="numero">
+<br>
+<label for="telefonefixo">informe o DDD com o número de telefone fixo:</label>
+<input type="tel" name="telefonefixo" id="telefonefixo" maxlength="12" onkeypress="completaTel()">
+<label for="telefonecelular">* Informe seu celular com DDD:</label>
+<input type="tel" name="celular" id="celular" maxlength="13" onkeypress="completaCel()">
+<br>
+<input type="button" value="salvar" onclick="validar()">
+</form>
+<script>
+function validar(){
+if (document.cadastro.nomecompleto.value=="")
+{
+alert("Favor preencher o campo nome");
+document.cadastro.nomecompleto.focus();
+}
+else if (document.cadastro.cpf.value=="")
+{
+alert("O campo CPF não pode ficar em branco");
+document.cadastro.cpf.focus();
+}
+else if (document.cadastro.cpf.value.length<11)
+{
+alert("O CPF não pode ter menos de 11 números.");
+document.cadastro.cpf.focus();
+}
+
+else if (document.cadastro.endereco.value=="")
+{
+alert("Favor preencher o endereço");
+document.cadastro.endereco.focus();
+}
+else if (document.cadastro.cep.value.length<8)
+{
+alert("O CEP precisa ter exatamente oito números");
+document.cadastro.cep.focus();
+}
+else if (document.cadastro.celular.value=="")
+{
+alert("Favor preencher o celular");
+document.cadastro.celular.focus();
+}
+
+else
+{
+document.cadastro.submit();
+}
+
+}
+function completaCpf(){
+var cpf=document.cadastro.cpf.value;
+if (cpf.length==3)
+{
+document.cadastro.cpf.value=document.cadastro.cpf.value+".";
+}
+else if (cpf.length==7)
+{
+document.cadastro.cpf.value=document.cadastro.cpf.value+".";
+}
+else if (cpf.length==11)
+{
+document.cadastro.cpf.value=document.cadastro.cpf.value+"-";
+}
+}
+
+function completaCEP()
+{
+var cep=document.cadastro.cep.value;
+if (cep.length==5)
+{
+document.cadastro.cep.value=document.cadastro.cep.value+"-";
+}
+}
+
+function completaTel(){
+var telefone=document.cadastro.telefonefixo.value;
+if (telefone.length==2)
+{
+document.cadastro.telefonefixo.value=document.cadastro.telefonefixo.value+" ";
+}
+else if (telefone.length==7)
+{
+document.cadastro.telefonefixo.value=document.cadastro.telefonefixo.value+"-";
+}
+}
+
+function completaCel(){
+var celular=document.cadastro.celular.value;
+if (celular.length==2)
+{
+document.cadastro.celular.value=document.cadastro.celular.value+" ";
+}
+else if (celular.length==8)
+{
+document.cadastro.celular.value=document.cadastro.celular.value+"-";
+}
+
+}
+</script>
+</body>
+</html>
